@@ -1,16 +1,60 @@
+<!DOCTYPE html>
 <html>
+    <title>
+        Simple Interest Calculator
+    </title>
     <head>
     <script src="script.js"></script>
+    <!-- Validation of Amount -->
+    <script type="application/javascript">
+     function checkdata(){
+        var starting=document.getElementById("principal"); 
+        if(starting.value<0 || starting.value==0){
+            alert("Enter a positive number");
+            starting.focus();
+            return false;
+        }
+     }
+    </script>
+
+    <!-- Call the Style sheet -->
     <link rel="stylesheet" href="style.css">
     </head>
-    <body>
+    <div class="maindiv">
         <h1>Simple Interest Calculator</h1>
+        <!-- validation of amount -->
+        <form id="form1" onsubmit="return checkdata()">
+          Amount <input type="number"  id="principal">
+        </form>
+        <br/>
+        Interest Rate <input type="range"  id="rate" min="1" max="20" step="0.25" value="10.25" onchange="updateRate()">
+        
+        <span id="rate_val">
+            <!-- Default interest rate -->
+            10.25%  
+        </span><br/><br/>
+        <!-- Set up drop down menu values -->
+        No. of Years <select id="years">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select>  <br/><br/>
+        
+        <!-- Call JavaScript to do calculations and display data -->
+        <button onclick="compute()">Compute Interest</button><br/><br/>
+        <span id="result"></span><br/>
 
-        Amount <input type="number"  id="principal">  <br/>
-        Rate <input type="number"  id="rate">  <br/>
-        No. of Years <input type="number"  id="years">  <br/>
-        Interest : <span id="result"></span><br>
+        <footer style="text-align:left;">
 
-        <button onclick="compute()">Compute</button>
-    </body>
+            &#169; This Calculator belongs to A Apsley
+
+        </footer> 
+    </div>
 </html>
